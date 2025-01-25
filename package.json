@@ -1,0 +1,14 @@
+{
+  "name": "code-challenge",
+  "version": "1.0.0",
+  "description": "A code challenge used to assess developers knowledge and skills",
+  "main": "index.js",
+  "author": "John Doe",
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "build": "node src/index.js build"
+  },
+  "keywords": []
+}
