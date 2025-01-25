@@ -12,6 +12,8 @@ RUN npm install
 
 COPY --chown=node:node . .
 
+RUN npm test
+
 EXPOSE 8080
 
 ENTRYPOINT [ "npm", "run", "start" ]
