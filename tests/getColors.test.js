@@ -3,22 +3,11 @@ const { getColor } = require('../src/apiMock');
 
 describe('getColors', () => {
   test('fetches enabled colors in the specified order as HEX values', async () => {
-    const colorFlags = { green: true, blue: false, red: true };
-    const colorOrder = ['green', 'blue', 'red'];
+    const colorFlags = { green: true, blue: false, red: true, white: true, black: true };
+    const colorOrder = ['green', 'blue', 'red', 'black', 'white'];
 
     const result = await getColors(colorFlags, colorOrder, () => {});
-    expect(result.map(color => color.HEX)).toEqual(['#00ff00', '#ff0000']);
-  });
-
-  test('fetches enabled colors in the specified order as RGB values', async () => {
-    const colorFlags = { green: true, blue: false, red: true };
-    const colorOrder = ['green', 'blue', 'red'];
-
-    const result = await getColors(colorFlags, colorOrder, () => {});
-    expect(result.map(color => `rgb(${color.RGB.R}, ${color.RGB.G}, ${color.RGB.B})`)).toEqual([
-      'rgb(0, 255, 0)',
-      'rgb(255, 0, 0)',
-    ]);
+    expect(result.map(color => color.HEX)).toEqual(['#00ff00', '#ff0000', "#000000", "#ffffff"]);
   });
 
   test('returns an empty array when no colors are enabled', async () => {

@@ -1,6 +1,6 @@
-const { parseArgs } = require('./utils/argsParser'); // Argument parsing logic
+const { parseArgs } = require('./utils/argsParser');
 
-const { getColors } = require('./utils/getColors'); // Argument parsing logic
+const { getColors } = require('./utils/getColors');
 
 function colors() {
 	// console.log("DEBUG: ", process.argv)

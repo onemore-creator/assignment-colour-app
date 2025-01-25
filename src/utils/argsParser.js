@@ -1,4 +1,4 @@
-const SUPPORTED_COLORS = ['red', 'green', 'blue'];
+const { supportedColors } = require('../classes');
 
 /**
  * Parses CLI arguments
@@ -38,8 +38,8 @@ function parseArgs(args) {
 
   // Validate colors and map flags to the corresponding colors
   const colorFlags = colorOrder.reduce((acc, color, index) => {
-    if (!SUPPORTED_COLORS.includes(color)) {
-      throw new Error(`Invalid color in order: "${color}". Supported colors: ${SUPPORTED_COLORS.join(', ')}`);
+    if (!supportedColors.includes(color)) {
+      throw new Error(`Invalid color in order: "${color}". Supported colors: ${supportedColors.join(', ')}`);
     }
     acc[color] = rawFlags[index] === 'true'; // Convert flag to boolean
     return acc;
