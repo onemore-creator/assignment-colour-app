@@ -33,7 +33,7 @@ npm install
 ```
 
 ```bash
-npm run start true false true '["green","blue","red"]'
+npm run start -- true false true '["green","blue","red"]'
 ```
 
 ## Docker build 
