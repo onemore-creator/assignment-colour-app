@@ -3,9 +3,10 @@ const { parseArgs } = require('./utils/argsParser');
 const { getColors } = require('./utils/getColors');
 
 function colors() {
-	// console.log("DEBUG: ", process.argv)
+	// console.log("DEBUG: ", args)
+	//TODO: Implement sequential input
 
-	//TODO: Implement useRGB and sequential input
+	//TODO: Decide how we will distinct black and blue color in short format
 
 	try {
 		

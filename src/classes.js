@@ -1,60 +1,85 @@
 class Color {
 	constructor(name) {
-
-		if (new.target === Color) {
-		  throw new Error("Color cannot be instantiated directly.");
-		}
-	
-		this.name = name;
-
-		Color.supportedColors.add(this.name);
-	  }	
-
-	  static supportedColors = new Set();
-
-	  static getSupportedColors() {
-		return Array.from(this.supportedColors);
-	}	
-}
-
-class Green extends Color {
-	constructor() {
-		super('green');
+	  if (new.target === Color) {
+		throw new Error("Color cannot be instantiated directly.");
+	  }
+  
+	  this.name = name;
+  
+	  Color.supportedColors.add(this.name);
 	}
-}
-
-class Blue extends Color {
-	constructor() {
-		super('blue');
+  
+	static supportedColors = new Set();
+  
+	static getSupportedColors() {
+	  return Array.from(this.supportedColors);
 	}
-}
-
-class Red extends Color {
-  constructor() {
-    super('red');
+  
+	// Add a getter for the name
+	getName() {
+	  return this.name;
+	}
   }
-}
-
-class White extends Color {
+  
+  class Green extends Color {
 	constructor() {
-		super('white')
+	  if (Green.instance) {
+		return Green.instance;
+	  }
+	  super('green');
+	  Green.instance = this;
 	}
-}
-
-
-class Black extends Color {
+  }
+  
+  class Blue extends Color {
 	constructor() {
-		super('black')
+	  if (Blue.instance) {
+		return Blue.instance;
+	  }
+	  super('blue');
+	  Blue.instance = this;
 	}
-}
-
-[Green, Blue, Red, White, Black].forEach((ColorClass) => new ColorClass());
-
-module.exports = {
-	Green,
-	Blue,
-	Red,
-	White,
-	Black,
+  }
+  
+  class Red extends Color {
+	constructor() {
+	  if (Red.instance) {
+		return Red.instance;
+	  }
+	  super('red');
+	  Red.instance = this;
+	}
+  }
+  
+  class White extends Color {
+	constructor() {
+	  if (White.instance) {
+		return White.instance;
+	  }
+	  super('white');
+	  White.instance = this;
+	}
+  }
+  
+  class Black extends Color {
+	constructor() {
+	  if (Black.instance) {
+		return Black.instance;
+	  }
+	  super('black');
+	  Black.instance = this;
+	}
+  }
+  
+  // Initialize all color subclasses to populate the supported colors set
+  [Green, Blue, Red, White, Black].forEach((ColorClass) => new ColorClass());
+  
+  module.exports = {
+	Green: new Green(),
+	Blue: new Blue(),
+	Red: new Red(),	
+	White: new White(),
+	Black: new Black(),
 	supportedColors: Color.getSupportedColors(),
-  };  
+  };
+  

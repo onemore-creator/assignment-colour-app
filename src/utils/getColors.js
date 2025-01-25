@@ -9,7 +9,7 @@ const { getColor } = require('../apiMock');
  */
 async function getColors(colorFlags, order, callback) {
 	const colors = [];
-  
+
 	// Loop through the color order and fetch only the enabled colors
 	for (const color of order) {
 	  if (colorFlags[color]) {
