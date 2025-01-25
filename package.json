@@ -6,12 +6,15 @@
   "author": "John Doe",
   "license": "UNLICENSED",
   "scripts": {
-    "test": "jest",
-    "start": "node src/index.js --",
+    "test": "standard && jest",
+    "start": "node src/index.js",
     "build": "node src/index.js build"
   },
   "keywords": [],
   "devDependencies": {
     "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "yargs": "^17.7.2"
   }
 }

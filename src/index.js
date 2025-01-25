@@ -1,36 +1,21 @@
 const { parseArgs } = require('./utils/argsParser');
 
-const { getColors } = require('./utils/getColors');
+const { execParallel } = require('./execParallel')
+const { execSeq } = require('./execSeq')
 
-function colors() {
-	// console.log("DEBUG: ", args)
-	//TODO: Implement sequential input
-
-	//TODO: Decide how we will distinct black and blue color in short format
-
+async function colors() {
 	try {
-		
-		const { colorFlags, colorOrder } = parseArgs(process.argv);
+		const { colorFlags, colorOrder, isSeq } = parseArgs(process.argv)
 
-		// console.log("DEBUG: ", colorFlags, colorOrder)
-	
-		getColors(colorFlags, colorOrder, async function (colors) {
-		colors = await Promise.all(colors)
-			// console.log(colors)
-			var hexColors = []
-			colors.forEach(color => color ? hexColors.push(color.HEX) : null)
-			console.log(hexColors);
-		});
-
+		if (isSeq) {
+			execSeq(colorFlags, colorOrder);
+		} else {
+			await execParallel(colorFlags, colorOrder);
+		}
 	} catch (error) {
 		console.error('Error:', error.message);
-		process.exit(1);	
+		process.exit(1);
 	}
 }
 
-colors()
-
-/*
-To run application:
-npm run start true false true '["green","blue", "red"]'
-*/
+colors();

@@ -6,8 +6,9 @@ describe('parseArgs', () => {
     const parsed = parseArgs(args);
 
     expect(parsed).toEqual({
-      colorFlags: { green: true, blue: true, red: true, black: true, white: true},
+      colorFlags: { green: true, blue: true, red: true, black: true, white: true },
       colorOrder: ['green', 'blue', 'red', 'black', 'white'],
+      isSeq: false
     });
   });
 
@@ -16,8 +17,9 @@ describe('parseArgs', () => {
     const parsed = parseArgs(args);
 
     expect(parsed).toEqual({
-      colorFlags: { green: true, blue: true, red: true, white: true},
+      colorFlags: { green: true, blue: true, red: true, white: true },
       colorOrder: ['green', 'blue', 'red', 'white'],
+      isSeq: false
     });
   });
 
@@ -31,7 +33,7 @@ describe('parseArgs', () => {
   test('throws an error for unsupported colors', () => {
     const args = ['node', 'index.js', 'true', 'false', 'true', '["yellow","blue","red"]'];
     expect(() => parseArgs(args)).toThrow(
-      'Invalid color in order: "yellow". Supported colors: green, blue, red, white, black'
+      'Invalid color found. Supported colors: green, blue, red, white, black'
     );
   });
 });

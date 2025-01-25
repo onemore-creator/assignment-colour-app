@@ -8,18 +8,18 @@ const { getColor } = require('../apiMock');
  * @returns {Promise<string[]>} - An array of colors (in HEX or RGB format).
  */
 async function getColors(colorFlags, order, callback) {
-	const colors = [];
+    const colors = [];
 
-	// Loop through the color order and fetch only the enabled colors
-	for (const color of order) {
-	  if (colorFlags[color]) {
-		const fetchedColor = await getColor(color);
-		colors.push(fetchedColor); // Add fetched color to results
-	  }
-	}
-  
-	callback(colors);
-	return colors;
-  }
+    // Loop through the color order and fetch only the enabled colors
+    for (const color of order) {
+        if (colorFlags[color]) {
+            const fetchedColor = await getColor(color);
+            colors.push(fetchedColor); // Add fetched color to results
+        }
+    }
+
+    callback(colors);
+    return colors;
+}
 
 module.exports = { getColors };
