@@ -28,12 +28,31 @@ OBS: The API mock must be used and it must NOT be changed.
 
 ## CLI:
 
-```bash
-npm install
-```
+The program can be executed using the npm run start command. Below are some usage examples:
+
+Basic Example: Retrieve the HEX values for green, blue, and red:
 
 ```bash
 npm run start -- true false true '["green","blue","red"]'
+```
+### Sequential Mode: Fetch and print one color at a time interactively:
+
+```bash
+npm run start -- green blue red white black --RGB --seq
+```
+Press Enter to fetch the next color.
+Type exit to quit.
+
+### Parallel Mode: Fetch and print all colors simultaneously:
+
+```bash
+npm run start -- green blue red white black --RGB
+```
+
+### Explicit Color Names: Specify the colors directly by name:
+
+```bash
+npm run start -- green blue white --GB
 ```
 
 ## Docker build 
@@ -46,4 +65,8 @@ docker build -t colours-app .
 docker run --rm  colours-app true false true '["green","blue","red"]'
 ```
 
-# TODO: Add more info 
+## Notes:
+
+The following colors are supported: red, green, blue, white, and black.
+
+If no flags or explicit colors are provided, all supported colors will be included.
