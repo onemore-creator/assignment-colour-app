@@ -71,14 +71,19 @@ class Black extends Color {
   }
 }
 
-// Initialize all color subclasses to populate the supported colors set
-[Green, Blue, Red, White, Black].forEach((ColorClass) => new ColorClass())
+const instantiatedColors = {};
 
-module.exports = {
-  Green: new Green(),
-  Blue: new Blue(),
-  Red: new Red(),
-  White: new White(),
-  Black: new Black(),
+// Initialize all color subclasses to populate the supported colors set
+[Green, Blue, Red, White, Black].forEach((ColorClass) => {
+  const color = new ColorClass()
+  const { name } = color.constructor
+  Object.defineProperty(instantiatedColors, name, {
+    get () {
+      return color
+    }
+  })
+})
+
+module.exports = Object.assign(instantiatedColors, {
   supportedColors: Color.getSupportedColors()
-}
+})
