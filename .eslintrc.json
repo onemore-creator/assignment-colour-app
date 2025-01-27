@@ -1,0 +1,23 @@
+{
+  "env": {
+    "node": true,
+    "jest": true // let ESLint know we're using Jest
+  },
+  "extends": [
+    "standard",
+    "plugin:jest/recommended",
+    "plugin:prettier/recommended" 
+    // ^ This plugin:prettier/recommended does two things:
+    //   1) Includes eslint-config-prettier 
+    //   2) Enables the prettier plugin, so Prettier is run as an ESLint rule
+  ],
+  "plugins": [
+    "jest",
+    "prettier"
+  ],
+  "rules": {
+    // In case you want Prettier errors to show up as actual errors in your editor/CI:
+    "prettier/prettier": "error"
+  }
+}
+

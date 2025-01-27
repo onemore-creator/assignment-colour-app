@@ -1,5 +1,5 @@
 class Color {
-  constructor (name) {
+  constructor(name) {
     if (new.target === Color) {
       throw new Error('Color cannot be instantiated directly.')
     }
@@ -11,18 +11,18 @@ class Color {
 
   static supportedColors = new Set()
 
-  static getSupportedColors () {
+  static getSupportedColors() {
     return Array.from(this.supportedColors)
   }
 
   // Add a getter for the name
-  getName () {
+  getName() {
     return this.name
   }
 }
 
 class Green extends Color {
-  constructor () {
+  constructor() {
     if (Green.instance) {
       return Green.instance
     }
@@ -32,7 +32,7 @@ class Green extends Color {
 }
 
 class Blue extends Color {
-  constructor () {
+  constructor() {
     if (Blue.instance) {
       return Blue.instance
     }
@@ -42,7 +42,7 @@ class Blue extends Color {
 }
 
 class Red extends Color {
-  constructor () {
+  constructor() {
     if (Red.instance) {
       return Red.instance
     }
@@ -52,7 +52,7 @@ class Red extends Color {
 }
 
 class White extends Color {
-  constructor () {
+  constructor() {
     if (White.instance) {
       return White.instance
     }
@@ -62,7 +62,7 @@ class White extends Color {
 }
 
 class Black extends Color {
-  constructor () {
+  constructor() {
     if (Black.instance) {
       return Black.instance
     }
@@ -71,19 +71,19 @@ class Black extends Color {
   }
 }
 
-const instantiatedColors = {};
+const instantiatedColors = {}
 
 // Initialize all color subclasses to populate the supported colors set
-[Green, Blue, Red, White, Black].forEach((ColorClass) => {
+;[Green, Blue, Red, White, Black].forEach((ColorClass) => {
   const color = new ColorClass()
   const { name } = color.constructor
   Object.defineProperty(instantiatedColors, name, {
-    get () {
+    get() {
       return color
-    }
+    },
   })
 })
 
 module.exports = Object.assign(instantiatedColors, {
-  supportedColors: Color.getSupportedColors()
+  supportedColors: Color.getSupportedColors(),
 })

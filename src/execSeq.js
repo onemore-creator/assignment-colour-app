@@ -7,10 +7,10 @@ const { getColors } = require('./utils/getColors')
  * @param {Object} colorFlags - An object mapping colors to boolean flags (e.g., { green: true, blue: false })
  * @param {string[]} colorOrder - An array of color names (e.g., ['green', 'blue', 'red', 'white', 'black'])
  */
-function execSeq (colorFlags, colorOrder) {
+function execSeq(colorFlags, colorOrder) {
   const rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
   })
 
   let index = 0
@@ -30,10 +30,8 @@ function execSeq (colorFlags, colorOrder) {
     index++
 
     try {
-      const colorArray = await getColors(
-        colorFlags,
-        [colorName],
-        async (promises) => Promise.all(promises)
+      const colorArray = await getColors(colorFlags, [colorName], async (promises) =>
+        Promise.all(promises),
       )
 
       const colorObj = colorArray[0]

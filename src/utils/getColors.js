@@ -7,7 +7,7 @@ const { getColor } = require('../apiMock')
  * @param {boolean} useRGB - Whether to output RGB format (true) or HEX (false).
  * @returns {Promise<string[]>} - An array of colors (isn HEX or RGB format).
  */
-async function getColors (colorFlags, order, callback) {
+async function getColors(colorFlags, order, callback) {
   const colors = []
 
   // Loop through the color order and fetch only the enabled colors

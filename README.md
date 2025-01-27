@@ -1,7 +1,9 @@
 # code-challenge
+
 A code challenge used to assess developers knowledge and skills
 
 ### Scenario
+
 A developer has tried to do a task that you must now take over and complete.
 
 After the developer left, the task has been extended with additional requirements that you must also fulfill.
@@ -9,11 +11,13 @@ After the developer left, the task has been extended with additional requirement
 OBS: The API mock must be used and it must NOT be changed.
 
 ### Requirements
+
 - It must be possible to run the program and get back the colors green, blue and red in HEX format.
 - It must be possible to define the colors using their names like red, blue and green.
 - It must be possible to define the order the colors are returned.
 
 ### New additional requirements
+
 - The program must support the colors white and black.
 - The program must be able to return the RGB values.
 - It must be possible to run the program in parallel mode getting and printing all the defined colors at the same time
@@ -23,8 +27,7 @@ OBS: The API mock must be used and it must NOT be changed.
 - The code should be clean, simple and follow best practices
 - There must be documentation about how to run the program
 
-
-# How-to run it 
+# How-to run it
 
 ## CLI:
 
@@ -35,11 +38,13 @@ Basic Example: Retrieve the HEX values for green, blue, and red:
 ```bash
 npm run start -- true false true '["green","blue","red"]'
 ```
+
 ### Sequential Mode: Fetch and print one color at a time interactively:
 
 ```bash
 npm run start -- green blue red white black --RGB --seq
 ```
+
 Press Enter to fetch the next color.
 Type exit to quit.
 
@@ -55,7 +60,7 @@ npm run start -- green blue red white black --RGB
 npm run start -- green blue white --GB
 ```
 
-## Docker build 
+## Docker build
 
 ```bash
 docker build -t colours-app .

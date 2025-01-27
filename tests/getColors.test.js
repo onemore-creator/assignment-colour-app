@@ -2,18 +2,24 @@ const { getColors } = require('../src/utils/getColors')
 
 describe('getColors', () => {
   test('fetches enabled colors in the specified order as HEX values', async () => {
-    const colorFlags = { green: true, blue: false, red: true, white: true, black: true }
+    const colorFlags = {
+      green: true,
+      blue: false,
+      red: true,
+      white: true,
+      black: true,
+    }
     const colorOrder = ['green', 'blue', 'red', 'black', 'white']
 
-    const result = await getColors(colorFlags, colorOrder, () => { })
-    expect(result.map(color => color.HEX)).toEqual(['#00ff00', '#ff0000', '#000000', '#ffffff'])
+    const result = await getColors(colorFlags, colorOrder, () => {})
+    expect(result.map((color) => color.HEX)).toEqual(['#00ff00', '#ff0000', '#000000', '#ffffff'])
   })
 
   test('returns an empty array when no colors are enabled', async () => {
     const colorFlags = { green: false, blue: false, red: false }
     const colorOrder = ['green', 'blue', 'red']
 
-    const result = await getColors(colorFlags, colorOrder, () => { })
+    const result = await getColors(colorFlags, colorOrder, () => {})
     expect(result).toEqual([])
   })
 
@@ -21,7 +27,7 @@ describe('getColors', () => {
     const colorFlags = { green: true, blue: true, red: true }
     const colorOrder = []
 
-    const result = await getColors(colorFlags, colorOrder, () => { })
+    const result = await getColors(colorFlags, colorOrder, () => {})
     expect(result).toEqual([])
   })
 
@@ -29,7 +35,7 @@ describe('getColors', () => {
     const colorFlags = { red: true, blue: true, unknown: true }
     const colorOrder = ['red', 'blue', 'unknown']
 
-    await expect(getColors(colorFlags, colorOrder, () => { })).rejects.toThrow('Unknown color')
+    await expect(getColors(colorFlags, colorOrder, () => {})).rejects.toThrow('Unknown color')
   })
 
   test('callback is invoked with correct results', async () => {
@@ -42,7 +48,7 @@ describe('getColors', () => {
     expect(mockCallback).toHaveBeenCalledWith([
       { name: 'red', HEX: '#ff0000', RGB: { R: 255, G: 0, B: 0 } },
       { name: 'blue', HEX: '#0000ff', RGB: { R: 0, G: 0, B: 255 } },
-      { name: 'green', HEX: '#00ff00', RGB: { R: 0, G: 255, B: 0 } }
+      { name: 'green', HEX: '#00ff00', RGB: { R: 0, G: 255, B: 0 } },
     ])
   })
 })

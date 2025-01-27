@@ -3,7 +3,7 @@ const { parseArgs } = require('./utils/argsParser')
 const { execParallel } = require('./execParallel')
 const { execSeq } = require('./execSeq')
 
-async function colors () {
+async function colors() {
   try {
     const { colorFlags, colorOrder, isSeq } = parseArgs(process.argv)
 
